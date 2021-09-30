@@ -55,12 +55,11 @@ public class Readfilekht {
                 phongthi = row.getCell(3).getStringCellValue();
                 ngay = row.getCell(1).getDateCellValue();
                 cathi = (int) row.getCell(2).getNumericCellValue();
-                mamon = row.getCell(6).getStringCellValue();
                 loaithi = row.getCell(8).getStringCellValue();
                 tenmon = row.getCell(5).getStringCellValue();
                 lop=row.getCell(9).getStringCellValue();
                 giangvien=row.getCell(10).getStringCellValue();
-                if (mamonhoc.length() > 0 && phongthi.length() > 0 && cathi > 0 && mamon.length() > 0) {
+                if (mamonhoc.length() > 0 && phongthi.length() > 0 && cathi > 0) {
                 	lst.add(new DsThi(cathi,giangvien, loaithi,lop,mamonhoc, ngay.toString(),phongthi,tenmon));
                 }
                 }
