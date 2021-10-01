@@ -24,21 +24,15 @@ public class LoginGoogle extends HttpServlet {
 			throws ServletException, IOException {
 		String code = request.getParameter("code");
 		if (code == null || code.isEmpty()) {
-			RequestDispatcher dis = request.getRequestDispatcher("/views/login.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher("/views/loginForm.jsp");
 			dis.forward(request, response);
 		} else {
 			String token = GoogleUtils.getToken(code);
 			GooglePojo googlePojo = GoogleUtils.getUserInfo(token);
 			request.setAttribute("id", googlePojo.getId());
 			request.setAttribute("email", googlePojo.getEmail());
-			RequestDispatcher dis = request.getRequestDispatcher("/views/index.jsp");
-			dis.forward(request, response);
+			response.sendRedirect("http://localhost:8080/Toolpdt/Home");
 		}
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// doGet(request, response);
 	}
 
 }
