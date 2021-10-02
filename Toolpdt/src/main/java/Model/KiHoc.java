@@ -23,6 +23,9 @@ public class KiHoc implements Serializable {
 	@Column(name="BLOCKID")
 	private String blockid;
 
+	@Column(name="ky_hoc")
+	private String kyHoc;
+
 	@Column(name="NAM_HOC")
 	private String namHoc;
 
@@ -53,6 +56,14 @@ public class KiHoc implements Serializable {
 
 	public void setBlockid(String blockid) {
 		this.blockid = blockid;
+	}
+
+	public String getKyHoc() {
+		return this.kyHoc;
+	}
+
+	public void setKyHoc(String kyHoc) {
+		this.kyHoc = kyHoc;
 	}
 
 	public String getNamHoc() {

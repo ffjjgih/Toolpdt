@@ -10,7 +10,7 @@ import Model.DsThi;
 import Services.Readfilekht;
 import utils.JpaUtils;
 
-public class Daokht implements Dao{
+public class Daokht extends Dao<DsThi>{
 	private DsThi kht;
 	private Readfilekht readkht;
 	private ArrayList<DsThi> lstkht;
@@ -26,9 +26,8 @@ public class Daokht implements Dao{
 		this.factory=entity.getEntityManagerFactory();
 	}
 
-	@Override
 	public void createkehoachthi(String name) {
-		this.lstkht=this.readkht.read(name);
+		//this.lstkht=this.readkht.read(name);
 		EntityTransaction transaction=entity.getTransaction();
 		try {
 			transaction.begin();
@@ -38,5 +37,15 @@ public class Daokht implements Dao{
 			e.printStackTrace();
 		}
 		
+	}
+
+	@Override
+	public String getdatabase() {
+		return DsThi.class.getSimpleName();
+	}
+
+	@Override
+	public Class<DsThi> getclass() {
+		return DsThi.class;
 	}
 }

@@ -11,7 +11,7 @@ public class JpaUtils {
 	}
 	public static EntityManagerFactory getEntityManagerFactory() {
 		if(factory == null || !factory.isOpen()) {
-			factory = Persistence.createEntityManagerFactory("toolthi");
+			factory = Persistence.createEntityManagerFactory("Toolpdt");
 		}
 		return factory;
 	}

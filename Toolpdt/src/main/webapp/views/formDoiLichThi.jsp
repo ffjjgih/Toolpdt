@@ -41,7 +41,7 @@
                                
                             </div> 
                             <div class="container_body-submit">
-                                <button class="btn_submit">SUBMIT</button>
+                                <button formaction="/Toolpdt/Uploadkht?id=${id}" class="btn_submit">SUBMIT</button>
                             </div>
                         </div>
                     </form>

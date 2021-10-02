@@ -122,29 +122,29 @@
         <!-- modal thêm kì mới -->
         <div class="model_add js-model_add ">
             <div class="model_add-container">
-                <form>
+                <form action="/Toolpdt/Home" method="post">
                     <div class="container_form">
                         <h2>Thêm kỳ học mới</h2>
                         <div class="form-group">
                             <label for="inputAddress">Năm học</label>
-                            <input type="text" class="form-control input-form" id="inputAddress"
+                            <input type="text" class="form-control input-form" id="nam_hoc" name="nam_hoc"
                                 placeholder="Điền năm học hiện tại">
                         </div>
                         <div class="btn-group">
                             <label for="">Block</label>
-                            <select id="selectFile" class="form-select form-select-lg mb-3 cbb"
+                            <select id="BLOCKID" name="BLOCKID" class="form-select form-select-lg mb-3 cbb"
                                 aria-label=".form-select-lg example">
-                                <option value="block1">Block 1</option>
-                                <option value="block2">Block 2</option>
+                                <option value="block1" id="BLOCKID">Block 1</option>
+                                <option value="block2" id="BLOCKID">Block 2</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="inputAddress2">Kỳ</label>
-                            <input type="text" class="form-control input-form" id="inputAddress2"
+                            <label for="kyhoc">Kỳ</label>
+                            <input type="text" class="form-control input-form" id="kyhoc" name="kyhoc"
                                 placeholder="Điền kỳ học hiện tại">
                         </div>
                         <button type="button" class="btn btn-danger btn_exit">Exit</button>
-                        <button type="button" class="btn btn-primary btn_submit">Submit</button>
+                        <button formaction="/Toolpdt/Home/insert" class="btn btn-primary btn_submit">Submit</button>
                     </div>
                 </form>
             </div>
