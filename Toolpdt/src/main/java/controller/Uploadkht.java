@@ -13,9 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import org.apache.commons.beanutils.BeanUtils;
+
+import Dao.Daokithi;
 //import Dao.Dao;
 //import Dao.Daokht;
 import Model.DsThi;
+import Model.KiHoc;
 import Services.Readfilekht;
 
 @MultipartConfig()
@@ -25,9 +29,14 @@ public class Uploadkht extends HttpServlet {
 	String namefile,tenfile;
 	private Readfilekht read;
 	private ArrayList<DsThi> lst;
+	private KiHoc kihoc;
+	private Daokithi dao;
+	int indexx;
     public Uploadkht() {
     	this.read=new Readfilekht();
     	this.lst=new ArrayList<DsThi>();
+    	this.kihoc=new KiHoc();
+    	this.dao=new Daokithi();
         
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,15 +44,20 @@ public class Uploadkht extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
 		request.getRequestDispatcher("/views/formDoiLichThi.jsp").forward(request, response);
+		 indexx=Integer.parseInt(request.getParameter("id"));
+		System.out.print(indexx+"abc");
+		request.setAttribute("id", indexx);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
+		request.setAttribute("id", indexx);
 		try {
-			readfilekht(request, response);
+			readfilekht(request, response,indexx);
 		} catch (NullPointerException ex) {
+			request.setAttribute("error", "xin mời chọn file");
 			ex.printStackTrace();
 			
 		} catch (IOException er) {
@@ -53,21 +67,16 @@ public class Uploadkht extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.getRequestDispatcher("/views/formDoiLichThi.jsp").forward(request, response);
+		response.sendRedirect("/Toolpdt/Readlsistmark");
 	}
 
-	private void readfilekht(HttpServletRequest request, HttpServletResponse response)throws NullPointerException, IOException, ServletException {
-		
-		String namefile=request.getParameter("namefile");
-		System.out.print(namefile);
-		if(namefile==null) {
+	private void readfilekht(HttpServletRequest request, HttpServletResponse response, int index)throws NullPointerException, IOException, ServletException {
 		String name=readurlfile(request, response);
-		lst=this.read.read(name);
+		kihoc=this.dao.findid(index);
+		lst=this.read.read(name,kihoc);
+		this.dao.insertkht(lst);
 		for(DsThi x:lst) {
 			System.out.print(x.getNgayThi() +"\t"+x.getCaThi() +"\t"+x.getPhongThi() +"\t"+x.getTenMon() +"\t"+x.getMaMon() +"\t"+x.getLoaiThi() +"\t"+x.getLop() +"\n");
-		}
-		}else {
-			
 		}
 		
 	}
@@ -80,7 +89,6 @@ public class Uploadkht extends HttpServlet {
 				Files.createDirectory(Path.of(realpath));
 			}
 			part.write(realpath + System.getProperty("file.separator") + namefile);
-			System.out.print(realpath + System.getProperty("file.separator") + namefile);
 			filename = realpath + System.getProperty("file.separator") + namefile;
 		return filename;
 	}

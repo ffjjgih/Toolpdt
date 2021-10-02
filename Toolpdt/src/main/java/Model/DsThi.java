@@ -22,8 +22,8 @@ public class DsThi implements Serializable {
 	@Column(name="CA_THI")
 	private int caThi;
 
-	@Column(name="GIANG_VIEN")
-	private String giangVien;
+	@Column(name="Giang_Vien")
+	private String giang_Vien;
 
 	@Column(name="LOAI_THI")
 	private String loaiThi;
@@ -67,12 +67,12 @@ public class DsThi implements Serializable {
 		this.caThi = caThi;
 	}
 
-	public String getGiangVien() {
-		return this.giangVien;
+	public String getGiang_Vien() {
+		return this.giang_Vien;
 	}
 
-	public void setGiangVien(String giangVien) {
-		this.giangVien = giangVien;
+	public void setGiang_Vien(String giang_Vien) {
+		this.giang_Vien = giang_Vien;
 	}
 
 	public String getLoaiThi() {
@@ -111,6 +111,20 @@ public class DsThi implements Serializable {
 		return this.phongThi;
 	}
 
+	public DsThi(int caThi, String giang_Vien, String loaiThi, String lop, String maMon, String ngayThi,
+			String phongThi, String tenMon,KiHoc kihoc) {
+		super();
+		this.caThi = caThi;
+		this.giang_Vien = giang_Vien;
+		this.loaiThi = loaiThi;
+		this.lop = lop;
+		this.maMon = maMon;
+		this.ngayThi = ngayThi;
+		this.phongThi = phongThi;
+		this.tenMon = tenMon;
+		this.kiHoc=kihoc;
+	}
+
 	public void setPhongThi(String phongThi) {
 		this.phongThi = phongThi;
 	}
@@ -130,19 +144,5 @@ public class DsThi implements Serializable {
 	public void setKiHoc(KiHoc kiHoc) {
 		this.kiHoc = kiHoc;
 	}
-
-	public DsThi(int caThi, String giangVien, String loaiThi, String lop, String maMon, String ngayThi, String phongThi,
-			String tenMon) {
-		super();
-		this.caThi = caThi;
-		this.giangVien = giangVien;
-		this.loaiThi = loaiThi;
-		this.lop = lop;
-		this.maMon = maMon;
-		this.ngayThi = ngayThi;
-		this.phongThi = phongThi;
-		this.tenMon = tenMon;
-	}
-	
 
 }

@@ -11,6 +11,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import Model.DsThi;
+import Model.KiHoc;
 
 public class Readfilekht {
 	
@@ -21,7 +22,7 @@ public class Readfilekht {
 		this.kht=new DsThi();
 		this.lst=new ArrayList<>();
 	}
-	public ArrayList<DsThi> read(String namefile){
+	public ArrayList<DsThi> read(String namefile,KiHoc k){
 		List<Integer> dscolumndiem=new ArrayList<>();
         String loaithi,block,ki,lop,tenmon,giangvien;
         try {
@@ -60,7 +61,7 @@ public class Readfilekht {
                 lop=row.getCell(9).getStringCellValue();
                 giangvien=row.getCell(10).getStringCellValue();
                 if (mamonhoc.length() > 0 && phongthi.length() > 0 && cathi > 0) {
-                	lst.add(new DsThi(cathi,giangvien, loaithi,lop,mamonhoc, ngay.toString(),phongthi,tenmon));
+                	lst.add(new DsThi(cathi,giangvien, loaithi,lop,mamonhoc, ngay.toString(),phongthi,tenmon,k));
                 }
                 }
             }
