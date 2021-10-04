@@ -4,26 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import Model.KiHoc;
 import utils.JpaUtils;
 
+
 public class Daokithi extends Dao<KiHoc>{
-	private JpaUtils conn;
-	private EntityManager entity;
-	private EntityTransaction transaction;
+	private JpaUtils conjpa;
+	private EntityManager manager;
 	private KiHoc k;
 	private List<KiHoc> lst;
 	public void daokithi() {
-		this.conn=new JpaUtils();
-		this.entity=conn.getEntityManager();
-		this.transaction=this.entity.getTransaction();
+		this.conjpa=new JpaUtils();
+		this.manager=this.conjpa.getEntityManager();
 		this.k=new KiHoc();
 		this.lst=new ArrayList<KiHoc>();
 	}
 	
+	/*
+	 * public List<KiHoc> getkihoc() { String hql="FROM KiHoc k ORDER BY idhk DESC";
+	 * TypedQuery<KiHoc> query=this.manager.createQuery(hql,getclass());
+	 * this.lst=query.getResultList(); return this.lst; }
+	 */
 	
 	@Override
 	public String getdatabase() {

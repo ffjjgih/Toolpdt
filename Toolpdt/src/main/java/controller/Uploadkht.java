@@ -15,6 +15,7 @@ import javax.servlet.http.Part;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import Dao.Daokht;
 import Dao.Daokithi;
 //import Dao.Dao;
 //import Dao.Daokht;
@@ -31,13 +32,14 @@ public class Uploadkht extends HttpServlet {
 	private ArrayList<DsThi> lst;
 	private KiHoc kihoc;
 	private Daokithi dao;
+	private Daokht daokht;
 	int indexx;
     public Uploadkht() {
     	this.read=new Readfilekht();
     	this.lst=new ArrayList<DsThi>();
     	this.kihoc=new KiHoc();
     	this.dao=new Daokithi();
-        
+        this.daokht=new Daokht();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("utf-8");
@@ -61,10 +63,8 @@ public class Uploadkht extends HttpServlet {
 			ex.printStackTrace();
 			
 		} catch (IOException er) {
-			// TODO Auto-generated catch block
 			er.printStackTrace();
 		} catch (ServletException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		response.sendRedirect("/Toolpdt/Readlsistmark");
@@ -74,9 +74,8 @@ public class Uploadkht extends HttpServlet {
 		String name=readurlfile(request, response);
 		kihoc=this.dao.findid(index);
 		lst=this.read.read(name,kihoc);
-		this.dao.insertkht(lst);
 		for(DsThi x:lst) {
-			System.out.print(x.getNgayThi() +"\t"+x.getCaThi() +"\t"+x.getPhongThi() +"\t"+x.getTenMon() +"\t"+x.getMaMon() +"\t"+x.getLoaiThi() +"\t"+x.getLop() +"\n");
+			this.daokht.insert(x);
 		}
 		
 	}
