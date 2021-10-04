@@ -15,6 +15,7 @@ import javax.servlet.http.Part;
 
 
 import Model.SinhVien;
+import Services.ReadFileQuiz;
 import Services.Readfilediemdanh;
 import Services.Readfileonline;
 
@@ -24,12 +25,14 @@ public class Readlsistmark extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Readfilediemdanh diemdanh;
 	private Readfileonline online;
+	private ReadFileQuiz quiz;
 	private ArrayList<SinhVien> lstsvthi;
 	private ArrayList<SinhVien> lstsvcamthi;
 
 	public Readlsistmark() {
 		this.diemdanh = new Readfilediemdanh();
 		this.online = new Readfileonline();
+		this.quiz = new ReadFileQuiz();
 		this.lstsvcamthi = new ArrayList<SinhVien>();
 		this.lstsvthi = new ArrayList<SinhVien>();
 	}
@@ -79,7 +82,17 @@ public class Readlsistmark extends HttpServlet {
 							+ "\t" + "," + "\t" + x.getStatus() + "\n");
 				}
 			} else {
-
+				this.quiz.kiemTraQuiz(file);
+				this.lstsvcamthi = this.quiz.getListSinhVienCamThi();
+				this.lstsvthi = this.quiz.getListSinhVienDiThi();
+				for (SinhVien x : lstsvcamthi) {
+					System.out.println(x.getIdSV() + "\t" + "," + "\t" + x.getNameSV() + "\t" + "," + "\t" + x.getMark()
+					+ "\t" + "," + "\t" + x.getStatus() + "\n");
+				}
+				for (SinhVien x : lstsvthi) {
+					System.out.println(x.getIdSV() + "\t" + "," + "\t" + x.getNameSV() + "\t" + "," + "\t" + x.getMark()
+							+ "\t" + "," + "\t" + x.getStatus() + "\n");
+				}
 			}
 		}
 		request.getRequestDispatcher("/views/formUpLoadDiem.jsp").forward(request, response);

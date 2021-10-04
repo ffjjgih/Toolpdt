@@ -15,7 +15,6 @@
     width: var(--button_width);
     height: var(--button_height);
     background-color: var(--button_add);
-    margin-left: -66px;
     color: #ffff;
     font-size: var(--button_font);
     border: none;
@@ -40,7 +39,7 @@
     border: none;
     outline: none;
     flex: 1;
-    right: 189px;
+    right: 128px;
     padding-left: 30px;
     border-radius: 5px;
     margin-top: -52px;
@@ -51,7 +50,7 @@
     right: 0;
     position: absolute;
     margin-top: -38px;
-    margin-right: 468px;
+    margin-right: 410px;
     z-index: 1;
     font-size: 15px;
 }
@@ -66,7 +65,7 @@
     color: #ffff;
     position: absolute;
     right: 0;
-    margin-right: 60px;
+    margin-right: 11px;
     margin-top: -48px;
     font-size: var(--font_text);
 }
@@ -74,7 +73,7 @@
 .table_font{
     font-size: var(--font_text);
     text-align: center;
-    width: 100%;
+    width: 100% !important;
 }
 
 .button_update{
@@ -85,6 +84,7 @@
     font-size: var(--button_font);
     border: none;
     border-radius: 5px;
+    margin-bottom: 5px;
 }
 
 .button_del{
@@ -95,6 +95,10 @@
     font-size: var(--button_font);
     border: none;
     border-radius: 5px;
+}
+
+table td{
+    vertical-align: middle !important;
 }
 
 /* form update */

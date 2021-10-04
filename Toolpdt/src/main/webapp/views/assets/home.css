@@ -1,15 +1,16 @@
 *{padding: 0; margin: 0; box-sizing: border-box;}
 
 .Container{
-    width: 100%;
+    max-width: 1350px;
     height: auto;
 }
 
 .container_left{
     /* width: 150px; */
-    height: 608px;
+    /* height: 608px; */
+    min-height: 608px;
+    max-height: 100%;
     border-right: 2px solid #C4C4C4;
-    /* background-color: aquamarine; */
 }
 
 .container_left-header{
@@ -99,7 +100,8 @@
 
 .container_right-body-controller{
     width: auto;
-    height: 280px;
+    min-height: 285px;
+    max-height: 100%;
     background-color: #E5E7EB;
 }
 
@@ -142,7 +144,7 @@
     height: 30px !important;
     float: right;
     margin-top: 16px;
-    margin-right: 20px;
+    margin-right: 2px;
 }
 
 .container_right-body-controller-table{
@@ -152,30 +154,20 @@
 
 .btn_add{
     width: 80px;
-    height: 40px;
+    height: 30px;
     font-size: 14px !important;
 }
 
 .button_update{
-    width: 80px;
-    height: 30px;
-    background-color: var(--button_update);
-    color: #ffff;
-    font-size: var(--button_font);
-    border: none;
-    border-radius: 5px;
-    margin: 0 10px;
+    text-decoration: none;
+    margin: 5px 10px;
+    color: var(--button_update);
 }
 
 .button_edit{
-    width: 80px;
-    height: 30px;
-    background-color: var(--button_del);
-    color: #ffff;
-    font-size: var(--button_font);
-    border: none;
-    border-radius: 5px;
-    margin: 0 10px;
+    text-decoration: none;
+    margin: 5px 10px;
+    color: var(--button_del);
 }
 
 .container_right-body-footer{
@@ -234,12 +226,12 @@
     margin-left: 30px;
 }
 
-.cbb{
+.cbb_model{
     height: 30px !important;
     width: 400px !important;
     font-size: 14px !important;
     margin-top: 25px;
-    /* margin-left: -32px; */
+    margin-left: 16px;
 }
 
 .container_form{

@@ -61,7 +61,7 @@
                             <table class="table table-striped">
                                 <thead class="thead-dark">
                                     <tr>
-                                        <th scope="col">TT</th>
+                                        <th scope="col">Năm học</th>
                                         <th scope="col">Học kì</th>
                                         <th scope="col">Block</th>
                                         <th scope="col">Trạng thái</th>
@@ -75,8 +75,8 @@
                                         <td>1</td>
                                         <td>Đang hoạt động</td>
                                         <td>
-                                            <button class="button_update">Cập nhật</button>
-                                            <button class="button_edit">Chỉnh sửa</button>
+                                            <a href="" class="button_update">Cập nhập</a>
+                                            <a href="" class="button_edit">Chỉnh sửa</a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -85,8 +85,8 @@
                                         <td>2</td>
                                         <td>Đã kết thúc</td>
                                         <td>
-                                            <button class="button_update">Cập nhật</button>
-                                            <button class="button_edit">Chỉnh sửa</button>
+                                            <a href="" class="button_update">Cập nhập</a>
+                                            <a href="" class="button_edit">Chỉnh sửa</a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -95,8 +95,8 @@
                                         <td>1</td>
                                         <td>Đã kết thúc</td>
                                         <td>
-                                            <button class="button_update">Cập nhật</button>
-                                            <button class="button_edit">Chỉnh sửa</button>
+                                            <a href="" class="button_update">Cập nhập</a>
+                                            <a href="" class="button_edit">Chỉnh sửa</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -122,29 +122,30 @@
         <!-- modal thêm kì mới -->
         <div class="model_add js-model_add ">
             <div class="model_add-container">
-                <form action="/Toolpdt/Home" method="post">
+                <form>
                     <div class="container_form">
                         <h2>Thêm kỳ học mới</h2>
                         <div class="form-group">
                             <label for="inputAddress">Năm học</label>
-                            <input type="text" class="form-control input-form" id="nam_hoc" name="nam_hoc"
+                            <input type="text" class="form-control input-form" id="inputAddress"
                                 placeholder="Điền năm học hiện tại">
                         </div>
+                        <div class="form-group">
+                            <label for="inputAddress2">Block</label>
+                            <input type="text" class="form-control input-form" id="inputAddress2"
+                                placeholder="Điền block hiện tại" onchange="checkForm()">
+                        </div>
                         <div class="btn-group">
-                            <label for="">Block</label>
-                            <select id="BLOCKID" name="BLOCKID" class="form-select form-select-lg mb-3 cbb"
+                            <label for="">Kỳ</label>
+                            <select id="selectFile" class="form-select form-select-lg mb-3 cbb_model"
                                 aria-label=".form-select-lg example">
-                                <option value="block1" id="BLOCKID">Block 1</option>
-                                <option value="block2" id="BLOCKID">Block 2</option>
+                                <option value="spring">SPRING</option>
+                                <option value="summer">SUMMER</option>
+                                <option value="fall">FALL</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="kyhoc">Kỳ</label>
-                            <input type="text" class="form-control input-form" id="kyhoc" name="kyhoc"
-                                placeholder="Điền kỳ học hiện tại">
-                        </div>
                         <button type="button" class="btn btn-danger btn_exit">Exit</button>
-                        <button formaction="/Toolpdt/Home/insert" class="btn btn-primary btn_submit">Submit</button>
+                        <button type="button" class="btn btn-primary btn_submit" >Submit</button>
                     </div>
                 </form>
             </div>
@@ -155,16 +156,33 @@
         const btnThem = document.querySelector('.js-btnAdd');
         const model = document.querySelector('.js-model_add');
         const btnExit = document.querySelector('.btn_exit');
-        function showModel(){
+        function showModel() {
             model.classList.add('open');
         }
-        function hideModel(){
+        function hideModel() {
             model.classList.remove('open');
         }
 
         btnThem.addEventListener('click', showModel);
 
         btnExit.addEventListener('click', hideModel);
+
+        function checkForm() {
+        	var ki = document.getElementById('inputAddress2').value;
+
+            if (isNaN(ki)) {
+                alert("Value input Block not a number, Please try again!");
+                document.getElementById('inputAddress2').style.borderColor = "red";
+            } else {
+                if (ki <=4 && ki >=1) {
+                    document.getElementById('inputAddress2').style.borderColor = "green";
+                } else {
+                    alert("Value input Block must between 1 to 4, Please try again!");
+                    document.getElementById('inputAddress2').style.borderColor = "red";
+                }
+            }
+
+        }
     </script>
 </body>
 

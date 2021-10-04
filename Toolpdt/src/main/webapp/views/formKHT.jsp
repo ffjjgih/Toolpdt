@@ -52,7 +52,7 @@
                 </ul>
                 <!-- table -->
                 <div class="grid wide">
-                    <table class="table table-striped table_font">
+                    <table class="table table_font table-hover">
                         <thead class="thead-dark">
                             <tr>
                                 <th>Ngày thi</th>
@@ -68,7 +68,21 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Fri, 23/4</td>
+                                <td>2021-10-03</td>
+                                <td>2</td>
+                                <td>P208</td>
+                                <td>Thiết kế hình ảnh với Photoshop (Adobe Photoshop)</td>
+                                <td>PRO1131</td>
+                                <td>Bảo vệ</td>
+                                <td>loanntt34</td>
+                                <td>PB16123-DIG</td>
+                                <td>
+                                    <button class="button_update js-btn_update">SỬA</button>
+                                    <button class="button_del">XÓA</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2021-10-03</td>
                                 <td>2</td>
                                 <td>P208</td>
                                 <td>Dự án 1 - Thương mại điện tử</td>
@@ -82,21 +96,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Fri, 23/4</td>
-                                <td>2</td>
-                                <td>P208</td>
-                                <td>Dự án 1 - Thương mại điện tử</td>
-                                <td>PRO1131</td>
-                                <td>Bảo vệ</td>
-                                <td>loanntt34</td>
-                                <td>PB16123-DIG</td>
-                                <td>
-                                    <button class="button_update js-btn_update">SỬA</button>
-                                    <button class="button_del">XÓA</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Fri, 23/4</td>
+                                <td>2021-10-03</td>
                                 <td>2</td>
                                 <td>P208</td>
                                 <td>Dự án 1 - Thương mại điện tử</td>
