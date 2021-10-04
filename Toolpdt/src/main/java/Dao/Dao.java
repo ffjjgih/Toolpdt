@@ -22,9 +22,7 @@ abstract public  class Dao<T> {
 		this.entity=conn.getEntityManager();
 		this.transaction=this.entity.getTransaction();
 	}
-	public void createkehoachthi(String name) {
-		
-	};
+	
 	public T insert(T t) {
 		try {
 			this.transaction.begin();
@@ -43,7 +41,6 @@ abstract public  class Dao<T> {
 	}
 	
 	public KiHoc findid(int id) {
-		
 		KiHoc k=this.entity.find(KiHoc.class, id);
 		return k;
 	}
@@ -65,22 +62,16 @@ abstract public  class Dao<T> {
 		return t;
 	}
 	
-	public T getkihoc() {
-		List<T> lst=new ArrayList<T>();
-		String hql="FROM KiHoc k ORDER BY NGAY_TAO DESC";
-		TypedQuery<T> query=this.entity.createQuery(hql,getclass());
-		lst=query.getResultList();
-		return lst.get(0);
+	public void updatekihoc() {
+		String hql="UPDATE Kihoc SET trangthai=:status WHERE DATEDIFF(DD,ngayTao,GETDATE())>0"; 
+		  TypedQuery<KiHoc> query=this.entity.createQuery(hql,KiHoc.class); 
+		  query.setParameter("status", "đã kết thúc");
+		  query.executeUpdate();
 	}
 	
-	public void insertkht(List<DsThi> lst) {
-		try {
-			this.transaction.begin();
-				this.entity.persist(lst);
-			this.transaction.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			this.transaction.rollback();
-		}
-	}
+	  public List<T> getkihoc() { List<T> lst=new ArrayList<T>(); String
+	 hql="FROM KiHoc k ORDER BY idhk DESC"; TypedQuery<T>
+	 query=this.entity.createQuery(hql,getclass()); lst=query.getResultList();
+	 return lst; }
+	 
 }

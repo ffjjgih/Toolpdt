@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <faceted-project>
   <runtime name="Apache Tomcat v8.5"/>
@@ -10,3 +11,18 @@
   <installed facet="jpt.jpa" version="2.2"/>
   <installed facet="jst.jaxrs" version="2.0"/>
 </faceted-project>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<faceted-project>
+  <runtime name="Apache Tomcat v8.5"/>
+  <fixed facet="wst.jsdt.web"/>
+  <fixed facet="java"/>
+  <fixed facet="jst.web"/>
+  <installed facet="java" version="15"/>
+  <installed facet="jst.web" version="3.1"/>
+  <installed facet="wst.jsdt.web" version="1.0"/>
+  <installed facet="jpt.jpa" version="2.2"/>
+  <installed facet="jst.jsf" version="2.2"/>
+  <installed facet="jst.jaxrs" version="2.0"/>
+</faceted-project>
+>>>>>>> c7d2f8db8f09372f5aa24e82edeac71ea2c8aa40

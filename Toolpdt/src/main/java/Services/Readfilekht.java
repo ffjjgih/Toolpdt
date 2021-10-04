@@ -1,6 +1,7 @@
 package Services;
 
 import java.io.FileInputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -26,7 +27,7 @@ public class Readfilekht {
 		List<Integer> dscolumndiem=new ArrayList<>();
         String loaithi,block,ki,lop,tenmon,giangvien;
         try {
-            String mamon, mamonhoc, phongthi;
+            String mamon, mamonhoc, phongthi,ngaythi;
             java.util.Date ngay = null;
             int cathi;
             FileInputStream excel = new FileInputStream(namefile);
@@ -34,9 +35,9 @@ public class Readfilekht {
             XSSFSheet sheet = workbook.getSheet("KH thi Block 2");
             Iterator<Row> iterator = sheet.iterator();
                 sheet.getRow(1).forEach(cellkht -> {
-                    if (cellkht.getStringCellValue().equalsIgnoreCase("Ngày thi") || cellkht.getStringCellValue().equalsIgnoreCase("Ca")
-                            || cellkht.getStringCellValue().equalsIgnoreCase("Phòng thi") || cellkht.getStringCellValue().equalsIgnoreCase("Mã môn")||
-                            cellkht.getStringCellValue().equalsIgnoreCase("Lớp")|| cellkht.getStringCellValue().equalsIgnoreCase("Loại Thi")||cellkht.getStringCellValue().equalsIgnoreCase("Tên Môn")) {
+                    if (cellkht.getStringCellValue().equalsIgnoreCase("ngày thi") || cellkht.getStringCellValue().equalsIgnoreCase("Ca")
+                            || cellkht.getStringCellValue().equalsIgnoreCase("phòng thi") || cellkht.getStringCellValue().equalsIgnoreCase("mã môn")||
+                            cellkht.getStringCellValue().equalsIgnoreCase("lớp")|| cellkht.getStringCellValue().equalsIgnoreCase("loại thi")||cellkht.getStringCellValue().equalsIgnoreCase("tên môn")) {
                         dscolumndiem.add(cellkht.getColumnIndex());
                         
                     }
@@ -55,13 +56,15 @@ public class Readfilekht {
                 }
                 phongthi = row.getCell(3).getStringCellValue();
                 ngay = row.getCell(1).getDateCellValue();
+                SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+                ngaythi=format.format(ngay);
                 cathi = (int) row.getCell(2).getNumericCellValue();
                 loaithi = row.getCell(8).getStringCellValue();
                 tenmon = row.getCell(5).getStringCellValue();
-                lop=row.getCell(9).getStringCellValue();
-                giangvien=row.getCell(10).getStringCellValue();
+                lop=row.getCell(10).getStringCellValue();
+                giangvien=row.getCell(11).getStringCellValue();
                 if (mamonhoc.length() > 0 && phongthi.length() > 0 && cathi > 0) {
-                	lst.add(new DsThi(cathi,giangvien, loaithi,lop,mamonhoc, ngay.toString(),phongthi,tenmon,k));
+                	lst.add(new DsThi(cathi,giangvien, loaithi,lop,mamonhoc, ngaythi,phongthi,tenmon,k));
                 }
                 }
             }

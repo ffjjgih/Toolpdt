@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +36,7 @@
             <div class="col-10 container_right">
                 <div class="container_right-header">
                     <div class="container_right-header-TT">
-                        <img class="header_right-icon_user" src="./views/assets/image/user.png" alt="">
+                        <a href="/Toolpdt/Home"><img class="header_right-icon_user" src="./views/assets/image/user.png" alt=""></a>
                         <h4 class="header_right-name_user">Nguyễn Lê Hải</h4>
                         <button class="header_right-btn_user">Đăng xuất</button>
                     </div>
@@ -61,7 +63,11 @@
                             <table class="table table-striped">
                                 <thead class="thead-dark">
                                     <tr>
+<<<<<<< HEAD
                                         <th scope="col">Năm học</th>
+=======
+                                        <th scope="col">Năm Học</th>
+>>>>>>> c7d2f8db8f09372f5aa24e82edeac71ea2c8aa40
                                         <th scope="col">Học kì</th>
                                         <th scope="col">Block</th>
                                         <th scope="col">Trạng thái</th>
@@ -69,6 +75,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+<<<<<<< HEAD
                                     <tr>
                                         <th scope="row">1</th>
                                         <td><a href="">Fall 2021</a></td>
@@ -87,18 +94,42 @@
                                         <td>
                                             <a href="" class="button_update">Cập nhập</a>
                                             <a href="" class="button_edit">Chỉnh sửa</a>
+=======
+                                <c:forEach items="${lstkythi}" var="kythi">
+                                <c:choose>
+                                	<c:when test="${kythi.trangThai=='đã kết thúc' }">
+                                	<tr>
+                                        <th scope="row">${kythi.namHoc }</th>
+                                        <td><a href="">${kythi.kyHoc }</a></td>
+                                        <td>${kythi.blockid }</td>
+                                        <td>${kythi.trangThai }</td>
+                                        <td>
+                                            <button class="button_update" disabled>Cập nhật</button>
+                                            <button class="button_edit" disabled>Chỉnh sửa</button>
+>>>>>>> c7d2f8db8f09372f5aa24e82edeac71ea2c8aa40
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td><a href="">Summer 2021</a></td>
-                                        <td>1</td>
-                                        <td>Đã kết thúc</td>
+                                	</c:when>
+                                	<c:otherwise>
+                                		<tr>
+                                        <th scope="row">${kythi.namHoc }</th>
+                                        <td><a href="">${kythi.kyHoc }</a></td>
+                                        <td>${kythi.blockid }</td>
+                                        <td>${kythi.trangThai }</td>
                                         <td>
+<<<<<<< HEAD
                                             <a href="" class="button_update">Cập nhập</a>
                                             <a href="" class="button_edit">Chỉnh sửa</a>
+=======
+                                            <a href="/Toolpdt/Readlsistmark?id=${kythi.idhk }" class="button_update">Cập nhật</a>
+                                            <a href="/Toolpdt/Updatekihoc?id=${kythi.idhk }" class="button_edit">Chỉnh sửa</a>
+>>>>>>> c7d2f8db8f09372f5aa24e82edeac71ea2c8aa40
                                         </td>
                                     </tr>
+                                	</c:otherwise>
+                                </c:choose>
+                                    
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>
