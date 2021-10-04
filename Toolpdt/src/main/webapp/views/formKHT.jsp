@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +25,7 @@
     <div id="app">
         <header class="header">
             <div class="grid wide">
-                <img class="header_img" src="./views/assets/image/Poly.png" alt="">
+                <a href="/Toolpdt/Home"><img class="header_img" src="./views/assets/image/Poly.png" alt=""></a>
                 <img class="header_icon_user" src="./views/assets/image/user.png" alt="">
             </div>
         </header>
@@ -67,48 +69,22 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <c:forEach items="${lst }" var="item">
                             <tr>
-                                <td>Fri, 23/4</td>
-                                <td>2</td>
-                                <td>P208</td>
-                                <td>Dự án 1 - Thương mại điện tử</td>
-                                <td>PRO1131</td>
-                                <td>Bảo vệ</td>
-                                <td>loanntt34</td>
-                                <td>PB16123-DIG</td>
+                                <td>${item.ngayThi }</td>
+                                <td>${item.caThi }</td>
+                                <td>${item.phongThi }</td>
+                                <td>${item.tenMon }</td>
+                                <td>${item.maMon }</td>
+                                <td>${item.loaiThi }</td>
+                                <td>${item.giang_Vien }</td>
+                                <td>${item.lop }</td>
                                 <td>
                                     <button class="button_update js-btn_update">SỬA</button>
                                     <button class="button_del">XÓA</button>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>Fri, 23/4</td>
-                                <td>2</td>
-                                <td>P208</td>
-                                <td>Dự án 1 - Thương mại điện tử</td>
-                                <td>PRO1131</td>
-                                <td>Bảo vệ</td>
-                                <td>loanntt34</td>
-                                <td>PB16123-DIG</td>
-                                <td>
-                                    <button class="button_update js-btn_update">SỬA</button>
-                                    <button class="button_del">XÓA</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Fri, 23/4</td>
-                                <td>2</td>
-                                <td>P208</td>
-                                <td>Dự án 1 - Thương mại điện tử</td>
-                                <td>PRO1131</td>
-                                <td>Bảo vệ</td>
-                                <td>loanntt34</td>
-                                <td>PB16123-DIG</td>
-                                <td>
-                                    <button class="button_update js-btn_update">SỬA</button>
-                                    <button class="button_del" data-dismiss="modal">XÓA</button>
-                                </td>
-                            </tr>
+                            </c:forEach>
                         </tbody>
                     </table>
                 </div>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +36,7 @@
             <div class="col-10 container_right">
                 <div class="container_right-header">
                     <div class="container_right-header-TT">
-                        <img class="header_right-icon_user" src="./views/assets/image/user.png" alt="">
+                        <a href="/Toolpdt/Home"><img class="header_right-icon_user" src="./views/assets/image/user.png" alt=""></a>
                         <h4 class="header_right-name_user">Nguyễn Lê Hải</h4>
                         <button class="header_right-btn_user">Đăng xuất</button>
                     </div>
@@ -61,7 +63,7 @@
                             <table class="table table-striped">
                                 <thead class="thead-dark">
                                     <tr>
-                                        <th scope="col">TT</th>
+                                        <th scope="col">Năm Học</th>
                                         <th scope="col">Học kì</th>
                                         <th scope="col">Block</th>
                                         <th scope="col">Trạng thái</th>
@@ -69,36 +71,35 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td><a href="">Fall 2021</a></td>
-                                        <td>1</td>
-                                        <td>Đang hoạt động</td>
+                                <c:forEach items="${lstkythi}" var="kythi">
+                                <c:choose>
+                                	<c:when test="${kythi.trangThai=='đã kết thúc' }">
+                                	<tr>
+                                        <th scope="row">${kythi.namHoc }</th>
+                                        <td><a href="">${kythi.kyHoc }</a></td>
+                                        <td>${kythi.blockid }</td>
+                                        <td>${kythi.trangThai }</td>
                                         <td>
-                                            <button class="button_update">Cập nhật</button>
-                                            <button class="button_edit">Chỉnh sửa</button>
+                                            <button class="button_update" disabled>Cập nhật</button>
+                                            <button class="button_edit" disabled>Chỉnh sửa</button>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td><a href="">Summer 2021</a></td>
-                                        <td>2</td>
-                                        <td>Đã kết thúc</td>
+                                	</c:when>
+                                	<c:otherwise>
+                                		<tr>
+                                        <th scope="row">${kythi.namHoc }</th>
+                                        <td><a href="">${kythi.kyHoc }</a></td>
+                                        <td>${kythi.blockid }</td>
+                                        <td>${kythi.trangThai }</td>
                                         <td>
-                                            <button class="button_update">Cập nhật</button>
-                                            <button class="button_edit">Chỉnh sửa</button>
+                                            <a href="/Toolpdt/Readlsistmark?id=${kythi.idhk }" class="button_update">Cập nhật</a>
+                                            <a href="/Toolpdt/Updatekihoc?id=${kythi.idhk }" class="button_edit">Chỉnh sửa</a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td><a href="">Summer 2021</a></td>
-                                        <td>1</td>
-                                        <td>Đã kết thúc</td>
-                                        <td>
-                                            <button class="button_update">Cập nhật</button>
-                                            <button class="button_edit">Chỉnh sửa</button>
-                                        </td>
-                                    </tr>
+                                	</c:otherwise>
+                                </c:choose>
+                                    
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>
