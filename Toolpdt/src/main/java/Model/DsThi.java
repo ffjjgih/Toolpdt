@@ -2,40 +2,40 @@ package Model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.Date;
 
 
 /**
- * The persistent class for the DS_THI database table.
+ * The persistent class for the ds_thi database table.
  * 
  */
 @Entity
-@Table(name="DS_THI")
+@Table(name="ds_thi")
 @NamedQuery(name="DsThi.findAll", query="SELECT d FROM DsThi d")
 public class DsThi implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID")
 	private int id;
 
 	@Column(name="CA_THI")
 	private int caThi;
 
-	@Column(name="Giang_Vien")
-	private String giang_Vien;
+	@Column(name="GIANG_VIEN")
+	private String giangVien;
 
 	@Column(name="LOAI_THI")
 	private String loaiThi;
 
-	@Column(name="LOP")
 	private String lop;
 
 	@Column(name="MA_MON")
 	private String maMon;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name="NGAY_THI")
-	private String ngayThi;
+	private Date ngayThi;
 
 	@Column(name="PHONG_THI")
 	private String phongThi;
@@ -45,7 +45,7 @@ public class DsThi implements Serializable {
 
 	//bi-directional many-to-one association to KiHoc
 	@ManyToOne
-	@JoinColumn(name="idhk")
+	@JoinColumn(name="IDHK")
 	private KiHoc kiHoc;
 
 	public DsThi() {
@@ -67,12 +67,12 @@ public class DsThi implements Serializable {
 		this.caThi = caThi;
 	}
 
-	public String getGiang_Vien() {
-		return this.giang_Vien;
+	public String getGiangVien() {
+		return this.giangVien;
 	}
 
-	public void setGiang_Vien(String giang_Vien) {
-		this.giang_Vien = giang_Vien;
+	public void setGiangVien(String giangVien) {
+		this.giangVien = giangVien;
 	}
 
 	public String getLoaiThi() {
@@ -99,30 +99,16 @@ public class DsThi implements Serializable {
 		this.maMon = maMon;
 	}
 
-	public String getNgayThi() {
+	public Date getNgayThi() {
 		return this.ngayThi;
 	}
 
-	public void setNgayThi(String ngayThi) {
+	public void setNgayThi(Date ngayThi) {
 		this.ngayThi = ngayThi;
 	}
 
 	public String getPhongThi() {
 		return this.phongThi;
-	}
-
-	public DsThi(int caThi, String giang_Vien, String loaiThi, String lop, String maMon, String ngayThi,
-			String phongThi, String tenMon,KiHoc kihoc) {
-		super();
-		this.caThi = caThi;
-		this.giang_Vien = giang_Vien;
-		this.loaiThi = loaiThi;
-		this.lop = lop;
-		this.maMon = maMon;
-		this.ngayThi = ngayThi;
-		this.phongThi = phongThi;
-		this.tenMon = tenMon;
-		this.kiHoc=kihoc;
 	}
 
 	public void setPhongThi(String phongThi) {
@@ -144,5 +130,20 @@ public class DsThi implements Serializable {
 	public void setKiHoc(KiHoc kiHoc) {
 		this.kiHoc = kiHoc;
 	}
+
+	public DsThi(int caThi, String giangVien, String loaiThi, String lop, String maMon, Date ngayThi,
+			String phongThi, String tenMon, KiHoc kiHoc) {
+		this.caThi = caThi;
+		this.giangVien = giangVien;
+		this.loaiThi = loaiThi;
+		this.lop = lop;
+		this.maMon = maMon;
+		this.ngayThi = ngayThi;
+		this.phongThi = phongThi;
+		this.tenMon = tenMon;
+		this.kiHoc = kiHoc;
+	}
+	
+	
 
 }

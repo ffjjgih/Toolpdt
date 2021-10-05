@@ -39,7 +39,6 @@ public class Home extends HttpServlet {
 		/* this.kithi.updatekihoc(); */
 		this.lstkh=this.kithi.getkihoc();
 		request.setAttribute("lstkythi", lstkh);
-		System.out.print(lstkh.size());
 		request.getRequestDispatcher("/views/HomeForm.jsp").forward(request, response);
 	}
 
@@ -50,7 +49,7 @@ public class Home extends HttpServlet {
 		if(url.contains("insert")) {
 			insert(request, response);
 			KiHoc k1=this.kithi.getkihoc().get(0);
-			response.sendRedirect("http://localhost:8080/Toolpdt/Uploadkht?id="+k1.getIdhk());
+			response.sendRedirect("http://localhost:8080/Toolpdt/Uploadkht?id="+k1.getIdkh());
 		}
 		
 		
@@ -60,7 +59,7 @@ public class Home extends HttpServlet {
 			LocalDate datetime = LocalDate.now();
 			java.sql.Date datetimesql = java.sql.Date.valueOf(datetime);
 			k.setBlockid(request.getParameter("BLOCKID"));
-			k.setNgayTao(datetimesql.toString());
+			k.setNgayTao(datetimesql);
 			k.setTrangThai("Đang Hoạt động");
 			k.setKyHoc(request.getParameter("kyhoc"));
 			k.setNamHoc(request.getParameter("nam_hoc"));

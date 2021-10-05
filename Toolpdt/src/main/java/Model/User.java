@@ -2,28 +2,34 @@ package Model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.math.BigInteger;
 
 
 /**
- * The persistent class for the USERS database table.
+ * The persistent class for the users database table.
  * 
  */
 @Entity
-@Table(name="USERS")
+@Table(name="users")
 @NamedQuery(name="User.findAll", query="SELECT u FROM User u")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID")
 	private int id;
 
-	@Column(name="GMAIL")
+	@Column(name="CURRENT_CONNECTIONS")
+	private BigInteger currentConnections;
+
 	private String gmail;
 
-	@Column(name="PASS_WORD")
-	private String passWord;
+	private String password;
+
+	@Column(name="TOTAL_CONNECTIONS")
+	private BigInteger totalConnections;
+
+	private String user;
 
 	public User() {
 	}
@@ -36,6 +42,14 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
+	public BigInteger getCurrentConnections() {
+		return this.currentConnections;
+	}
+
+	public void setCurrentConnections(BigInteger currentConnections) {
+		this.currentConnections = currentConnections;
+	}
+
 	public String getGmail() {
 		return this.gmail;
 	}
@@ -44,12 +58,28 @@ public class User implements Serializable {
 		this.gmail = gmail;
 	}
 
-	public String getPassWord() {
-		return this.passWord;
+	public String getPassword() {
+		return this.password;
 	}
 
-	public void setPassWord(String passWord) {
-		this.passWord = passWord;
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public BigInteger getTotalConnections() {
+		return this.totalConnections;
+	}
+
+	public void setTotalConnections(BigInteger totalConnections) {
+		this.totalConnections = totalConnections;
+	}
+
+	public String getUser() {
+		return this.user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
 	}
 
 }

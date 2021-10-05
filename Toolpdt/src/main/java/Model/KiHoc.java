@@ -2,35 +2,35 @@ package Model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 
 /**
- * The persistent class for the KI_HOC database table.
+ * The persistent class for the ki_hoc database table.
  * 
  */
 @Entity
-@Table(name="KI_HOC")
+@Table(name="ki_hoc")
 @NamedQuery(name="KiHoc.findAll", query="SELECT k FROM KiHoc k")
 public class KiHoc implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="IDHK")
-	private int idhk;
+	private int idkh;
 
-	@Column(name="BLOCKID")
 	private String blockid;
 
-	@Column(name="ky_hoc")
+	@Column(name="KY_HOC")
 	private String kyHoc;
 
 	@Column(name="NAM_HOC")
 	private String namHoc;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name="NGAY_TAO")
-	private String ngayTao;
+	private Date ngayTao;
 
 	@Column(name="TRANG_THAI")
 	private String trangThai;
@@ -42,12 +42,12 @@ public class KiHoc implements Serializable {
 	public KiHoc() {
 	}
 
-	public int getIdhk() {
-		return this.idhk;
+	public int getIdkh() {
+		return this.idkh;
 	}
 
-	public void setIdhk(int idhk) {
-		this.idhk = idhk;
+	public void setIdkh(int idkh) {
+		this.idkh = idkh;
 	}
 
 	public String getBlockid() {
@@ -74,11 +74,11 @@ public class KiHoc implements Serializable {
 		this.namHoc = namHoc;
 	}
 
-	public String getNgayTao() {
+	public Date getNgayTao() {
 		return this.ngayTao;
 	}
 
-	public void setNgayTao(String ngayTao) {
+	public void setNgayTao(Date ngayTao) {
 		this.ngayTao = ngayTao;
 	}
 

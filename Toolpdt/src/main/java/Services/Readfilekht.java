@@ -27,8 +27,9 @@ public class Readfilekht {
 		List<Integer> dscolumndiem=new ArrayList<>();
         String loaithi,block,ki,lop,tenmon,giangvien;
         try {
-            String mamon, mamonhoc, phongthi,ngaythi;
-            java.util.Date ngay = null;
+            String mamon, mamonhoc, phongthi;
+            
+            java.util.Date ngay = null, ngaythi;
             int cathi;
             FileInputStream excel = new FileInputStream(namefile);
             XSSFWorkbook workbook = new XSSFWorkbook(excel);
@@ -56,15 +57,13 @@ public class Readfilekht {
                 }
                 phongthi = row.getCell(3).getStringCellValue();
                 ngay = row.getCell(1).getDateCellValue();
-                SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
-                ngaythi=format.format(ngay);
                 cathi = (int) row.getCell(2).getNumericCellValue();
                 loaithi = row.getCell(8).getStringCellValue();
                 tenmon = row.getCell(5).getStringCellValue();
                 lop=row.getCell(10).getStringCellValue();
                 giangvien=row.getCell(11).getStringCellValue();
                 if (mamonhoc.length() > 0 && phongthi.length() > 0 && cathi > 0) {
-                	lst.add(new DsThi(cathi,giangvien, loaithi,lop,mamonhoc, ngaythi,phongthi,tenmon,k));
+                	lst.add(new DsThi(cathi,giangvien, loaithi,lop,mamonhoc, ngay,phongthi,tenmon,k));
                 }
                 }
             }
