@@ -73,7 +73,7 @@
                                 <tbody>
                                 <c:forEach items="${lstkythi}" var="kythi">
                                 <c:choose>
-                                	<c:when test="${kythi.trangThai=='đã kết thúc' }">
+                                	<c:when test="${kythi.trangThai=='Đã kết thúc' }">
                                 	<tr>
                                         <th scope="row">${kythi.namHoc }</th>
                                         <td><a href="">${kythi.kyHoc }</a></td>
@@ -92,8 +92,8 @@
                                         <td>${kythi.blockid }</td>
                                         <td>${kythi.trangThai }</td>
                                         <td>
-                                            <a href="/Toolpdt/Readlsistmark?id=${kythi.idhk }" class="button_update">Cập nhật</a>
-                                            <a href="/Toolpdt/Updatekihoc?id=${kythi.idhk }" class="button_edit">Chỉnh sửa</a>
+                                            <a href="/Toolpdt/Readlsistmark?id=${kythi.idkh }" class="button_update">Cập nhật</a>
+                                            <a href="/Toolpdt/Updatekihoc?id=${kythi.idkh }" class="button_edit">Chỉnh sửa</a>
                                         </td>
                                     </tr>
                                 	</c:otherwise>

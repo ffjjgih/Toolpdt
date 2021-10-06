@@ -11,18 +11,21 @@ import Model.DsThi;
 import Model.KiHoc;
 import utils.JpaUtils;
 
-abstract public  class Dao<T> {
+abstract public class Dao<T> {
 	abstract public String getdatabase();
+
 	abstract public Class<T> getclass();
+
 	private JpaUtils conn;
 	private EntityManager entity;
 	private EntityTransaction transaction;
+
 	public Dao() {
-		this.conn=new JpaUtils();
-		this.entity=conn.getEntityManager();
-		this.transaction=this.entity.getTransaction();
+		this.conn = new JpaUtils();
+		this.entity = conn.getEntityManager();
+		this.transaction = this.entity.getTransaction();
 	}
-	
+
 	public T insert(T t) {
 		try {
 			this.transaction.begin();
@@ -34,18 +37,19 @@ abstract public  class Dao<T> {
 		}
 		return t;
 	};
-	
+
 	public T findbyid(String id) {
-		T t=this.entity.find(getclass(), id);
+		T t = this.entity.find(getclass(), id);
 		return t;
 	}
-	
+
 	public KiHoc findid(int id) {
-		KiHoc k=this.entity.find(KiHoc.class, id);
+		KiHoc k = this.entity.find(KiHoc.class, id);
 		return k;
 	}
+
 	public void delete(String id) {
-		T t=this.findbyid(id);
+		T t = this.findbyid(id);
 		try {
 			this.transaction.begin();
 			this.entity.remove(t);
@@ -54,24 +58,27 @@ abstract public  class Dao<T> {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public List<T> getall() {
-		String hql="From"+getdatabase();
-		TypedQuery<T> query=entity.createQuery(hql,getclass());
-		List<T> t=query.getResultList();
+		String hql = "From" + getdatabase();
+		TypedQuery<T> query = entity.createQuery(hql, getclass());
+		List<T> t = query.getResultList();
 		return t;
 	}
-	
+
 	public void updatekihoc() {
-		String hql="UPDATE Kihoc SET trangthai=:status WHERE DATEDIFF(DD,ngayTao,GETDATE())>0"; 
-		  TypedQuery<KiHoc> query=this.entity.createQuery(hql,KiHoc.class); 
-		  query.setParameter("status", "đã kết thúc");
-		  query.executeUpdate();
+		String hql = "UPDATE Kihoc SET trangthai=:status WHERE DATEDIFF(DD,ngayTao,GETDATE())>0";
+		TypedQuery<KiHoc> query = this.entity.createQuery(hql, KiHoc.class);
+		query.setParameter("status", "Đã kết thúc");
+		query.executeUpdate();
 	}
-	
-	  public List<T> getkihoc() { List<T> lst=new ArrayList<T>(); String
-	 hql="FROM KiHoc k ORDER BY idhk DESC"; TypedQuery<T>
-	 query=this.entity.createQuery(hql,getclass()); lst=query.getResultList();
-	 return lst; }
-	 
+
+	public List<T> getkihoc() {
+		List<T> lst = new ArrayList<T>();
+		String hql = "FROM KiHoc k ORDER BY idhk DESC";
+		TypedQuery<T> query = this.entity.createQuery(hql, getclass());
+		lst = query.getResultList();
+		return lst;
+	}
+
 }

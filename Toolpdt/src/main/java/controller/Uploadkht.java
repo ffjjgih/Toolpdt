@@ -46,7 +46,7 @@ public class Uploadkht extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
 		request.getRequestDispatcher("/views/formDoiLichThi.jsp").forward(request, response);
-		 indexx=Integer.parseInt(request.getParameter("id"));
+		indexx=Integer.parseInt(request.getParameter("id"));
 		System.out.print(indexx+"abc");
 		request.setAttribute("id", indexx);
 	}
@@ -59,7 +59,7 @@ public class Uploadkht extends HttpServlet {
 		try {
 			readfilekht(request, response,indexx);
 		} catch (NullPointerException ex) {
-			request.setAttribute("error", "xin mời chọn file");
+			request.setAttribute("error", "Xin mời chọn file");
 			ex.printStackTrace();
 			
 		} catch (IOException er) {

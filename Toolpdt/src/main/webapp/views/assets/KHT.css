@@ -30,6 +30,8 @@
     cursor: pointer;
     border: none;
     opacity: 0.8;
+    text-decoration: none;
+    color: #fff;
 }
 
 .container_search-input{
@@ -85,6 +87,9 @@
     font-size: var(--button_font);
     border: none;
     border-radius: 5px;
+    margin-bottom: 5px;
+    padding-top: 8px;
+    text-decoration: none;
 }
 
 .button_del{
@@ -95,6 +100,8 @@
     font-size: var(--button_font);
     border: none;
     border-radius: 5px;
+    padding-top: 8px;
+    text-decoration: none;
 }
 
 /* form update */

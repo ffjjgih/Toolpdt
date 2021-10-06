@@ -27,6 +27,7 @@
             <div class="grid wide">
                 <a href="/Toolpdt/Home"><img class="header_img" src="./views/assets/image/Poly.png" alt=""></a>
                 <img class="header_icon_user" src="./views/assets/image/user.png" alt="">
+                <button class="header_right-btn_user">Đăng xuất</button>
             </div>
         </header>
 
@@ -39,22 +40,24 @@
                         </div>
                     </li>
                 </ul>
-                <ul class="container_button">
-                    <li>
-                        <div class="container_search">
-                            <i class="container_search-icon fas fa-search"></i>
-                            <input type="text" placeholder="VD IT16308" class="container_search-input">
-                        </div>
-                    </li>
-                    <li>
-                        <div class="grid wide">
-                            <button class="button_find">TÌM KIẾM</button>
-                        </div>
-                    </li>
-                </ul>
+                <form action="searchkht" method="post">
+                    <ul class="container_button">
+                        <li>
+                            <div class="container_search">
+                                <i class="container_search-icon fas fa-search"></i>
+                                <input type="text" placeholder="VD IT16308" name = "txtSearch" class="container_search-input">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="grid wide">
+                                <button type="submit" class="button_find">TÌM KIẾM</button>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
                 <!-- table -->
                 <div class="grid wide">
-                    <table class="table table-striped table_font">
+                    <table class="table table_font table-hover">
                         <thead class="thead-dark">
                             <tr>
                                 <th>Ngày thi</th>
@@ -69,7 +72,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${lst }" var="item">
+                        <c:forEach items="${lst}" var="item">
                             <tr>
                                 <td>${item.ngayThi }</td>
                                 <td>${item.caThi }</td>
@@ -77,11 +80,11 @@
                                 <td>${item.tenMon }</td>
                                 <td>${item.maMon }</td>
                                 <td>${item.loaiThi }</td>
-                                <td>${item.giang_Vien }</td>
+                                <td>${item.giangVien }</td>
                                 <td>${item.lop }</td>
                                 <td>
-                                    <button class="button_update js-btn_update">SỬA</button>
-                                    <button class="button_del">XÓA</button>
+                                    <a type = "submit" href="loadtoupdate?khtID=${item.id}" class="button_update">SỬA</a>
+                                    <a type = "submit" href="deletekht?khtID=${item.id}" class="button_del">XÓA</a>
                                 </td>
                             </tr>
                             </c:forEach>
@@ -93,52 +96,51 @@
         </body>
         <div class="modal_update js-modal_update ">
             <div class="modal_container_update js-modal_container_update">
-                <form action="">
+                <form action="insertkht" method="post">
                     <div class="modal-header">
-                        <h3 class="modal-title">Sửa thông tin</h3>
+                        <h3 class="modal-title">Thêm kế hoạch thi</h3>
                     </div>
                     <div class="modal-body">
                         <div class="form-left">
                             <ul>
                                 <li class="form_text">Ngày thi</li>
-                                <li><input type="text" class="form_input"></li>
+                                <li><input type="text" class="form_input" name ="ngaythi"></li>
                             </ul>
                             <ul>
                                 <li class="form_text">Phòng thi</li>
-                                <li><input type="text" class="form_input"></li>
+                                <li><input type="text" class="form_input" name ="phongthi"></li>
                             </ul>
                             <ul>
                                 <li class="form_text">Mã môn</li>
-                                <li><input type="text" class="form_input"></li>
+                                <li><input type="text" class="form_input" name ="mamon"></li>
                             </ul>
                             <ul>
                                 <li class="form_text">Giáo viên</li>
-                                <li><input type="text" class="form_input"></li>
+                                <li><input type="text" class="form_input" name ="giaovien"></li>
                             </ul>
                         </div>
                         <div class="form-right">
                             <ul>
                                 <li class="form_text">Ca thi</li>
-                                <li><input type="text" class="form_input"></li>
+                                <li><input type="text" class="form_input" name ="cathi"></li>
                             </ul>
                             <ul>
                                 <li class="form_text">Tên môn</li>
-                                <li><input type="text" class="form_input"></li>
+                                <li><input type="text" class="form_input" name ="tenmon"></li>
                             </ul>
                             <ul>
                                 <li class="form_text">Loại thi</li>
-                                <li><input type="text" class="form_input"></li>
+                                <li><input type="text" class="form_input" name ="loaithi"></li>
                             </ul>
                             <ul>
                                 <li class="form_text">Lớp</li>
-                                <li><input type="text" class="form_input"></li>
+                                <li><input type="text" class="form_input" name ="lop"></li>
                             </ul>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <div class="button">
                             <button class="button_form_update sub">SUBMIT</button>
-                            <button class="button_form_update exit js-btn-close">THOÁT</button>
                         </div>
                     </div>
                 </form>

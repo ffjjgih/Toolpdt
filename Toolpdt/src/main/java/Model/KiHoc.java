@@ -20,6 +20,7 @@ public class KiHoc implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idkh;
 
+	@Column(name="BLOCKID")
 	private String blockid;
 
 	@Column(name="KY_HOC")

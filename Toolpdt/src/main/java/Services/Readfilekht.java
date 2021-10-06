@@ -63,7 +63,8 @@ public class Readfilekht {
                 lop=row.getCell(10).getStringCellValue();
                 giangvien=row.getCell(11).getStringCellValue();
                 if (mamonhoc.length() > 0 && phongthi.length() > 0 && cathi > 0) {
-                	lst.add(new DsThi(cathi,giangvien, loaithi,lop,mamonhoc, ngay,phongthi,tenmon,k));
+//                	lst.add(new DsThi(cathi,giangvien, loaithi,lop,mamonhoc, ngay,phongthi,tenmon,k));
+                	lst.add(new DsThi(k, ngay, cathi, phongthi, tenmon, mamonhoc, loaithi, lop, giangvien));
                 }
                 }
             }

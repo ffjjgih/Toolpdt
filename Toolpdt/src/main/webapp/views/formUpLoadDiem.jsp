@@ -25,6 +25,7 @@
             <div class="grid wide">
                 <img class="header_img" src="./views/assets/image/Poly.png" alt="">
                 <img class="header_icon_user" src="./views/assets/image/user.png" alt="">
+                <button class="header_right-btn_user">Đăng xuất</button>
             </div>
         </header>
         <div class="container">

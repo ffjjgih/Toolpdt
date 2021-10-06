@@ -29,7 +29,7 @@
 				<canvas id="demo-canvas"></canvas>
 				<img src="./views/assets/image/owl.gif" alt="flashy" class="w3l">
 				<h2 class="main-title">404</span></h2>
-				<p class="w3-agileits2">We can't seem to find the page you're looking for.</p>
+				<p class="w3-agileits2">${error}</p>
 			</div>
 		</div>
 	</div>

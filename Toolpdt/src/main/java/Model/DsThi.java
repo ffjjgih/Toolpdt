@@ -28,6 +28,7 @@ public class DsThi implements Serializable {
 	@Column(name="LOAI_THI")
 	private String loaiThi;
 
+	@Column(name="LOP")
 	private String lop;
 
 	@Column(name="MA_MON")
@@ -49,6 +50,34 @@ public class DsThi implements Serializable {
 	private KiHoc kiHoc;
 
 	public DsThi() {
+	}
+
+	public DsThi(KiHoc kiHoc, Date ngayThi, int caThi, String phongThi, String tenMon, String maMon, 
+			String loaiThi, String lop, String giangVien) {
+		this.caThi = caThi;
+		this.giangVien = giangVien;
+		this.loaiThi = loaiThi;
+		this.lop = lop;
+		this.maMon = maMon;
+		this.ngayThi = ngayThi;
+		this.phongThi = phongThi;
+		this.tenMon = tenMon;
+		this.kiHoc = kiHoc;
+	}
+	
+	
+	public DsThi(int id, KiHoc kiHoc, Date ngayThi, int caThi, String phongThi, String tenMon, String maMon, 
+			String loaiThi, String lop, String giangVien) {
+		this.id = id;
+		this.caThi = caThi;
+		this.giangVien = giangVien;
+		this.loaiThi = loaiThi;
+		this.lop = lop;
+		this.maMon = maMon;
+		this.ngayThi = ngayThi;
+		this.phongThi = phongThi;
+		this.tenMon = tenMon;
+		this.kiHoc = kiHoc;
 	}
 
 	public int getId() {
@@ -131,17 +160,11 @@ public class DsThi implements Serializable {
 		this.kiHoc = kiHoc;
 	}
 
-	public DsThi(int caThi, String giangVien, String loaiThi, String lop, String maMon, Date ngayThi,
-			String phongThi, String tenMon, KiHoc kiHoc) {
-		this.caThi = caThi;
-		this.giangVien = giangVien;
-		this.loaiThi = loaiThi;
-		this.lop = lop;
-		this.maMon = maMon;
-		this.ngayThi = ngayThi;
-		this.phongThi = phongThi;
-		this.tenMon = tenMon;
-		this.kiHoc = kiHoc;
+	@Override
+	public String toString() {
+		return "DsThi [id=" + id + ", caThi=" + caThi + ", giangVien=" + giangVien + ", loaiThi=" + loaiThi + ", lop="
+				+ lop + ", maMon=" + maMon + ", ngayThi=" + ngayThi + ", phongThi=" + phongThi + ", tenMon=" + tenMon
+				+ ", kiHoc=" + kiHoc + "]";
 	}
 	
 	

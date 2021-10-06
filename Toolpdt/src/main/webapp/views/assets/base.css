@@ -56,6 +56,22 @@ html{
     height: 45px;
     position: absolute;
     right: 0;
-    margin-right: 60px;
+    margin-right: 220px;
     margin-top: 15px;
+}
+
+.header_right-btn_user:hover {
+    opacity: 0.8;
+}
+.header_right-btn_user{
+    width: var(--button_width);
+    height: var(--button_height);
+    background-color: var(--button_update);
+    color: #ffff;
+    font-size: var(--button_font);
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    float: right;
+    margin-top: 18px;
 }
