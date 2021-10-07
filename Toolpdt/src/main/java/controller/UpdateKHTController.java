@@ -51,6 +51,7 @@ public class UpdateKHTController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		try {
+			
 			String idkht = request.getParameter("idkht");
 			int id = Integer.parseInt(idkht);
 			
@@ -71,9 +72,9 @@ public class UpdateKHTController extends HttpServlet {
 			
 			String giangvien = request.getParameter("giaovien");
 			
-//			String idkh = request.getParameter("");
+			String idkh = request.getParameter("idKiHoc");
 			KiHoc kh = new KiHoc();
-			kh.setIdkh(1);
+			kh.setIdkh(Integer.parseInt(idkh));
 
 			this.update(id, kh, ngaythi, cathi, phongthi, tenmon, mamon, loaithi, lop, giangvien);
 			request.setAttribute("suc", "UPDATE SUCCESSFUL!");

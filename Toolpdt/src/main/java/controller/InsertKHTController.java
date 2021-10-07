@@ -7,6 +7,7 @@ import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,7 +41,6 @@ public class InsertKHTController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -54,35 +54,37 @@ public class InsertKHTController extends HttpServlet {
 
 		try {
 			String ngaythiInput = request.getParameter("ngaythi");
+			
 			Date ngaythi = this.changeDate(ngaythiInput);
-			
+
 			int cathi = Integer.parseInt(request.getParameter("cathi"));
-			
+
 			String phongthi = request.getParameter("phongthi");
-			
+
 			String tenmon = request.getParameter("tenmon");
-			
+
 			String mamon = request.getParameter("mamon");
-			
+
 			String loaithi = request.getParameter("loaithi");
-			
+
 			String lop = request.getParameter("lop");
-			
+
 			String giangvien = request.getParameter("giaovien");
-			
-//			String idkh = request.getParameter("");
+
+			String idkh = request.getParameter("idkh");
 			KiHoc kh = new KiHoc();
-			kh.setIdkh(1);
+			kh.setIdkh(Integer.parseInt(idkh));
 
 			this.insert(kh, ngaythi, cathi, phongthi, tenmon, mamon, loaithi, lop, giangvien);
 			request.setAttribute("suc", "INSERT SUCCESSFUL!");
-			request.getRequestDispatcher("views/formKHT.jsp").forward(request, response);
+			request.setAttribute("id", idkh);
+			//response.sendRedirect("http://localhost:8080/Toolpdt/Updatekihoc?id="+idkh);
+			//request.getRequestDispatcher("views/formKHT.jsp").forward(request, response);
 			System.out.println("insert successful");
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			request.setAttribute("error", "INSERT FAIL, TRY AGAIN!");
-			request.getRequestDispatcher("views/ErrorForm.jsp").forward(request, response);
+			//request.getRequestDispatcher("views/ErrorForm.jsp").forward(request, response);
 		}
 
 	}
@@ -104,13 +106,14 @@ public class InsertKHTController extends HttpServlet {
 
 	private Date changeDate(String dateInput) throws ParseException {
 		String[] dateM = dateInput.split("-");
-		
+
 		String dateOut = dateM[2] + "-" + dateM[1] + "-" + dateM[0];
-		
+
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		
+
 		Date date = sdf.parse(dateOut);
 		return date;
 	}
+
 
 }

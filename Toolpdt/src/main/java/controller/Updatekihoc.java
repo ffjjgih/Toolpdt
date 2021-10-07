@@ -6,9 +6,11 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Dao.Daokht;
 import Dao.Daokithi;
@@ -41,10 +43,12 @@ public class Updatekihoc extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		index=Integer.parseInt(request.getParameter("id"));
+		String idkh = request.getParameter("id");
+		index=Integer.parseInt(idkh);
 		this.k=this.daokithi.findid(index);
 		this.lstdsthi=this.daokht.findbykihoc(k);
 		request.setAttribute("lst", this.lstdsthi);
+		request.setAttribute("id", index);
 		request.getRequestDispatcher("/views/formKHT.jsp").forward(request, response);
 	}
 
@@ -55,5 +59,6 @@ public class Updatekihoc extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+	
 
 }

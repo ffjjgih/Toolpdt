@@ -62,6 +62,24 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                            <div class = "formDownLoad">
+                                    <p class="textDownload">Lựa chọn định dạng file muốn tải: </p>
+                                    <div class="rdo-group_download" id="modalCBB">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="downloadFile"
+                                                id="inlineRadio1" value="fileExcel" checked>
+                                            <label class="form-check-label" for="inlineRadio1">DOWNLOAD FILE
+                                                EXCEL</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="downloadFile"
+                                                id="inlineRadio2" value="fileWord">
+                                            <label class="form-check-label" for="inlineRadio2">DOWNLOAD FILE
+                                                WORD</label>
+                                        </div>
+                                    </div>
+                                </div>
                             <div class="container_body-submit">
                                 <button formaction="/Toolpdt/Readlsistmark" class="btn_submit">SUBMIT</button>
                             </div>

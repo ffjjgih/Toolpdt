@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Dao.Daokht;
 import Model.DsThi;
+import Model.KiHoc;
 
 /**
  * Servlet implementation class LoadToUpdateController
@@ -37,8 +38,10 @@ public class LoadToUpdateController extends HttpServlet {
 		int idkh = Integer.parseInt(id);
 		
 		DsThi kht = this.dao.getKHTById(idkh);
+		int IdKH = kht.getKiHoc().getIdkh();
 		if (kht != null) {
 			request.setAttribute("detail", kht);
+			request.setAttribute("id", IdKH);
 			request.getRequestDispatcher("views/loadToUpdate.jsp").forward(request, response);
 			request.setAttribute("suc", "GET KẾ HOẠCH THI SUCCESSFUL!");
 		} else {

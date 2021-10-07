@@ -170,6 +170,10 @@
     color: var(--button_del);
 }
 
+.button_edit:hover{
+    color: var(--button_del);
+}
+
 .container_right-body-footer{
     margin-top: 20px;
 }

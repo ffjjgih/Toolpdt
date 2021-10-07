@@ -31,12 +31,11 @@
 
         <div class="container">
             <div class="title">
-                <h2>>> UPDATE KẾ HOẠCH THI</h2>
+                <h2>>> UPDATE KẾ HOẠCH THI <input class="idkh" value = "${id}" name = "idKiHoc" readonly></h2>
             </div>
-
             <form action="updatekht" method="post">
             	<div class="mb-3 row">
-                    <p for="staticEmail" class="col-sm-4 label_text col-form-label">ID Kế hoạch thi</p>
+                    <p for="staticEmail" class="col-sm-4 label_text col-form-label">ID</p>
                     <div class="col-sm-7">
                         <input type="text" value = "${detail.id }" name = "idkht" class="form-control input_control" id="inputPassword" readonly>
                     </div>

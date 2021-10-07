@@ -54,7 +54,7 @@
     position: absolute;
     margin-top: -38px;
     margin-right: 468px;
-    z-index: 1;
+    z-index: 1 !important;
     font-size: 15px;
 }
 
@@ -104,7 +104,28 @@
     text-decoration: none;
 }
 
+table td{
+    vertical-align: middle !important;
+}
+
 /* form update */
+.idkh{
+    width: 15px;
+    height: auto;
+    font-weight: 500;
+    border: none;
+    outline: none;
+}
+
+.model-header_exit{
+    font-size: 25px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.model-header_exit:hover{
+    cursor: pointer;
+}
 
 .modal_update{
     position: fixed;
@@ -117,6 +138,7 @@
     display: none;
     align-items: center;
     justify-content: center;
+    z-index: 2 !important;
 }
 
 .modal_update.open{
@@ -199,4 +221,9 @@ li{
 
 .exit{
     background-color: var(--button_add);
+}
+
+.container_alert{
+    font-size: 16px !important;
+    height: 50px !important;
 }
